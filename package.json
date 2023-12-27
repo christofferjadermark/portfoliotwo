@@ -15,10 +15,17 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.19.0",
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.1.1",
+    "@mdi/js": "^7.4.47",
+    "@mdi/react": "^1.6.1",
+    "aos": "^2.3.4",
     "autoprefixer": "^10.4.16",
     "gatsby": "^5.13.0",
     "gatsby-plugin-image": "^3.13.0",
     "gatsby-plugin-postcss": "^6.13.0",
+    "gatsby-plugin-react-svg": "^3.3.0",
     "gatsby-plugin-sharp": "^5.13.0",
     "gatsby-source-contentful": "^8.13.0",
     "gatsby-transformer-sharp": "^5.13.0",

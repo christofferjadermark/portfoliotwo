@@ -1,176 +1,205 @@
-import * as React from "react"
+import * as React from "react";
+import { graphql } from "gatsby";
+import { useEffect, useState } from "react";
+import Layout from "../components/layout";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { Link } from "gatsby";
 
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
+const IndexPage = ({ data }) => {
+  Aos.init();
 
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
+  const words = [
+    { id: 0, value: "Hello," },
+    { id: 1, value: "Hola," },
+    { id: 2, value: "Bonjour," },
+    { id: 3, value: "Ciao," },
+    { id: 4, value: "Hallo," },
+    { id: 5, value: "Hej," },
+    { id: 6, value: "Guten Tag," },
+  ];
 
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-}
+  function randomWord() {
+    return words[Math.floor(Math.random() * words.length)].value;
+  }
 
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
+  function NewWord() {
+    const [word, setWord] = useState("");
+    useEffect(() => {
+      const interval = setInterval(() => {
+        const randomText = randomWord();
+        setWord(randomText);
+      }, 1500);
+      return () => clearInterval(interval);
+    }, []);
+    return (
+      <div className="leading-8xl font-main text-6xl font-semibold text-white transition">
+        {word}
+      </div>
+    );
+  }
 
-const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
-  color: "#8954A8",
-}
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/getting-started/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
-
-const IndexPage = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-          >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
+    <Layout>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="flex flex-col gap-6">
+          <h1 className="text-white  text-7xl font-primaryFont">{NewWord()}</h1>
+          <p className="text-5xl text-textSecondary font-primaryFont">
+            My name is Christoffer and I’m a <br /> front end developer.
+          </p>
+          <p className="text-2xl text-textPrimary font-primaryFont">
+            I craft responsive websites where technologies meet creativity.
+          </p>
+          <button className="bg-btnColor p-3 text-bgColor max-w-40 font-primaryFont">
+            WORK WITH ME
+          </button>
+        </section>
+      </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section
+          data-aos="zoom-in"
+          data-aos-duration="600"
+          className="mt-72 mb-20"
+        >
+          <div className="flex flex-row items-center">
+            <h2 className="text-4xl text-white font-primaryFont test">
+              projects
+            </h2>
+            <div className="w-2/4 ml-4 h-px bg-btnColor"></div>
+          </div>
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {data.allContentfulProjects.nodes.map((project) => (
+              <div
+                className="mt-5 w-full border-textPrimary border"
+                key={project.slug}
               >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
-  )
-}
+                <img
+                  className="max-h-56 w-full"
+                  src={project.image.file.url}
+                  alt="bild"
+                />
+                <p className="p-2 font-primaryFont border-y border-textPrimary text-textPrimary">
+                  {project.tags}
+                </p>
 
-export default IndexPage
+                <div className="p-4">
+                  <h3 className="text-xl text-white font-primaryFont border-textPrimary mt-2">
+                    {project.imageTitle}
+                  </h3>
+                  <p className="font-primaryFont text-textPrimary">
+                    {project.imageDescription}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section data-aos="zoom-in" data-aos-duration="600">
+          <div className="flex flex-row items-center">
+            <h2 className="text-4xl text-white font-primaryFont test">
+              about-me
+            </h2>
+            <div className="w-1/3 ml-4 h-px bg-btnColor"></div>
+          </div>
+          <div className="flex flex-col w-2/4 gap-5 mt-7">
+            <p className="text-textPrimary font-primaryFont">
+              Hello, I'm Christoffer!
+            </p>
+            <p className="text-textPrimary font-primaryFont">
+              I'm a dedicated front-end developer based in Alingsås, Sweden. My
+              expertise lies in crafting responsive websites from the ground up,
+              elevating them into contemporary, user-centric online experiences.
+            </p>
+            <p className="text-textPrimary font-primaryFont">
+              Channeling my creativity and technical knowledge into website
+              development has been my fervent passion for over a year. During
+              this time, I have assisted diverse clients in solidifying their
+              online presence. I am constantly on the quest to learn about the
+              latest technologies and frameworks to ensure that I deliver
+              cutting-edge solutions.
+            </p>
+            <Link
+              className="text-secondaryBtnColor outline hover:bg-secondaryBtnColor text-center hover:text-bgColor p-2 max-w-40 font-primaryFont"
+              to="/about"
+            >
+              Read more
+            </Link>
+          </div>
+        </section>
+      </div>
+    </Layout>
+  );
+};
 
-export const Head = () => <title>Home Page</title>
+export const pageQuery = graphql`
+  query {
+    allContentfulProjects {
+      nodes {
+        imageDescription
+        imageTitle
+        id
+        slug
+        tags
+        image {
+          file {
+            url
+          }
+        }
+      }
+    }
+  }
+`;
+
+// const IndexPage = () => {
+//   return (
+//     <main style={pageStyles}>
+//       <h1 style={headingStyles}>
+//         Congratulations
+//         <br />
+//         <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
+//       </h1>
+//       <p style={paragraphStyles}>
+//         Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
+//         update in real-time. 😎
+//       </p>
+//       <ul style={listStyles}>
+//         <li style={docLinkStyle}>
+//           <a
+//             style={linkStyle}
+//             href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
+//           >
+//             {docLink.text}
+//           </a>
+//         </li>
+//         {links.map(link => (
+//           <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
+//             <span>
+//               <a
+//                 style={linkStyle}
+//                 href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
+//               >
+//                 {link.text}
+//               </a>
+//               {link.badge && (
+//                 <span style={badgeStyle} aria-label="New Badge">
+//                   NEW!
+//                 </span>
+//               )}
+//               <p style={descriptionStyle}>{link.description}</p>
+//             </span>
+//           </li>
+//         ))}
+//       </ul>
+//       <img
+//         alt="Gatsby G Logo"
+//         src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
+//       />
+//     </main>
+//   )
+// }
+
+export default IndexPage;
+
+export const Head = () => <title>Home Page</title>;
