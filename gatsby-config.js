@@ -1,6 +1,8 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+require("dotenv").config()
+
 module.exports = {
   siteMetadata: {
     title: `portfolio`,
@@ -10,8 +12,8 @@ module.exports = {
     {
       resolve: "gatsby-source-contentful",
       options: {
-        accessToken: "N4zGbdN339DRimIrZ_OkidlaOgkK7Lnui17yLe7KNzI",
-        spaceId: "pg5okymqfib2",
+        accessToken: process.env.DB_ACCESS_TOKEN,
+        spaceId: process.env.DB_SPACE_ID,
         rule: {
           include: /assets/,
         },
