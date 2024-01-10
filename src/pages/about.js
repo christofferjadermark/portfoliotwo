@@ -10,9 +10,9 @@ const AboutPage = () => {
   return (
     <Layout>
       <div className="flex justify-center mb-56">
-        <h1 className="text-white text-5xl font-primaryFont">
+        <div className="text-white text-5xl font-primaryFont sm:text">
           Welcome to my world!
-        </h1>
+        </div>
       </div>
       <div className="flex flex-col gap-48">
         <div
@@ -82,8 +82,6 @@ const AboutPage = () => {
           </p>
         </div>
         <div
-          data-aos="fade-right"
-          data-aos-offset="500"
           className="flex flex-col gap-3"
         >
           <h2 className="text-white text-xl font-primaryFont">

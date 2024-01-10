@@ -69,28 +69,27 @@ const IndexPage = ({ data }) => {
           </div>
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {data.allContentfulProjects.nodes.map((project) => (
-              <div
-                className="mt-5 w-full border-textPrimary border"
-                key={project.slug}
-              >
-                <img
-                  className="max-h-56 w-full"
-                  src={project.image.file.url}
-                  alt="bild"
-                />
-                <p className="p-2 font-primaryFont border-y border-textPrimary text-textPrimary">
-                  {project.tags}
-                </p>
-
-                <div className="p-4">
-                  <h3 className="text-xl text-white font-primaryFont border-textPrimary mt-2">
-                    {project.imageTitle}
-                  </h3>
-                  <p className="font-primaryFont text-textPrimary">
-                    {project.imageDescription}
+              <Link to={`/projects/${project.slug}`} key={project.slug}>
+                <div className="mt-5 w-full border-textPrimary border">
+                  <img
+                    className="max-h-56 w-full"
+                    src={project.image.file.url}
+                    alt="bild"
+                  />
+                  <p className="p-2 font-primaryFont border-y border-textPrimary text-textPrimary">
+                    {project.tags}
                   </p>
+
+                  <div className="p-4">
+                    <h3 className="text-xl text-white font-primaryFont border-textPrimary mt-2">
+                      {project.imageTitle}
+                    </h3>
+                    <p className="font-primaryFont text-textPrimary">
+                      {project.imageDescription}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </section>

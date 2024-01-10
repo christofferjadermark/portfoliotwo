@@ -6,12 +6,6 @@ module.exports = {
     `./src/components/**/*.{js,jsx,ts,tsx}`,
   ],
   theme: {
-    screens: {
-      sm: "480px",
-      md: "768px",
-      lg: "976px",
-      xl: "1440px",
-    },
     colors: {
       textPrimary: "#ABB2BF",
       bgColor: "#282C33",

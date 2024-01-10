@@ -47,7 +47,7 @@ const MobileHeader = () => {
           <li className="font-primaryFont items-center test flex">
             <Link to="/">home</Link>
           </li>
-          <li className="font-primaryFont items-center test flex">works</li>
+          <li className="font-primaryFont items-center test flex"><Link to="/works">works</Link></li>
           <li className="font-primaryFont items-center test flex">
             <Link to="/about">about-me</Link>
           </li>

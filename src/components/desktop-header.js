@@ -18,7 +18,7 @@ const DesktopHeader = () => {
           <li className="font-primaryFont items-center flex test">
             <Link to="/">home</Link>
           </li>
-          <li className="font-primaryFont items-center flex test">works</li>
+          <li className="font-primaryFont items-center flex test"><Link to="/works">works</Link></li>
           <li className="font-primaryFont items-center flex test">
             <Link to="/about">about-me</Link>
           </li>
