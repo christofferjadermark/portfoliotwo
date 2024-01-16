@@ -1,12 +1,9 @@
 import * as React from "react";
 import Layout from "../components/layout";
-import Aos from "aos";
 import "aos/dist/aos.css";
+import { Link } from "gatsby";
 
 const AboutPage = () => {
-  Aos.init();
-  Aos.refresh();
-
   return (
     <Layout>
       <div className="flex justify-center mb-56">
@@ -81,9 +78,7 @@ const AboutPage = () => {
             but what they need before they even know they need it.
           </p>
         </div>
-        <div
-          className="flex flex-col gap-3"
-        >
+        <div className="flex flex-col gap-3">
           <h2 className="text-white text-xl font-primaryFont">
             Let's Connect and Create!
           </h2>
@@ -94,6 +89,12 @@ const AboutPage = () => {
             touch of Swedish flair, look no further. Let's connect and embark on
             this digital journey together!
           </p>
+          <Link
+            className="text-secondaryBtnColor outline hover:bg-secondaryBtnColor text-center hover:text-bgColor p-2 max-w-40 font-primaryFont"
+            to="/contact"
+          >
+            Contact me
+          </Link>
         </div>
       </div>
     </Layout>

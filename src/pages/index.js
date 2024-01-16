@@ -2,12 +2,11 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { useEffect, useState } from "react";
 import Layout from "../components/layout";
-import Aos from "aos";
-import "aos/dist/aos.css";
 import { Link } from "gatsby";
 
 const IndexPage = ({ data }) => {
-  Aos.init();
+  const truncate = (input) =>
+    input?.length > 75 ? `${input.substring(0, 75)}...` : input;
 
   const words = [
     { id: 0, value: "Hello," },
@@ -41,6 +40,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
+      <div className="glass w-full h-0.5 rounded-sm mb-10"></div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <section className="flex flex-col gap-6">
           <h1 className="text-white  text-7xl font-primaryFont">{NewWord()}</h1>
@@ -55,12 +55,9 @@ const IndexPage = ({ data }) => {
           </button>
         </section>
       </div>
+      <div className="glass w-full h-0.5 rounded-sm mt-10"></div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <section
-          data-aos="zoom-in"
-          data-aos-duration="600"
-          className="mt-72 mb-20"
-        >
+        <section data-aos="zoom-in" className="mt-80 mb-20">
           <div className="flex flex-row items-center">
             <h2 className="text-4xl text-white font-primaryFont test">
               projects
@@ -68,13 +65,13 @@ const IndexPage = ({ data }) => {
             <div className="w-2/4 ml-4 h-px bg-btnColor"></div>
           </div>
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {data.allContentfulProjects.nodes.map((project) => (
+            {data.allContentfulProjects.nodes.slice(0, 3).map((project) => (
               <Link to={`/projects/${project.slug}`} key={project.slug}>
-                <div className="mt-5 w-full border-textPrimary border">
+                <div className="mt-5 w-full border-textPrimary border overflow-hidden">
                   <img
-                    className="max-h-56 w-full"
+                    className="max-h-56 w-full object-cover border-textPrimary"
                     src={project.image.file.url}
-                    alt="bild"
+                    alt="projects"
                   />
                   <p className="p-2 font-primaryFont border-y border-textPrimary text-textPrimary">
                     {project.tags}
@@ -84,9 +81,16 @@ const IndexPage = ({ data }) => {
                     <h3 className="text-xl text-white font-primaryFont border-textPrimary mt-2">
                       {project.imageTitle}
                     </h3>
-                    <p className="font-primaryFont text-textPrimary">
-                      {project.imageDescription}
+                    <p className="font-primaryFont mb-4 text-textPrimary">
+                      {truncate(project.imageDescription)}
                     </p>
+                    <Link
+                      className="text-secondaryBtnColor outline hover:bg-secondaryBtnColor text-center hover:text-bgColor p-2 max-w-40 font-primaryFont"
+                      to={`/projects/${project.slug}`}
+                      key={project.slug}
+                    >
+                      Read more
+                    </Link>
                   </div>
                 </div>
               </Link>
@@ -94,15 +98,15 @@ const IndexPage = ({ data }) => {
           </div>
         </section>
       </div>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <section data-aos="zoom-in" data-aos-duration="600">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-96">
+        <section data-aos="zoom-in">
           <div className="flex flex-row items-center">
             <h2 className="text-4xl text-white font-primaryFont test">
               about-me
             </h2>
             <div className="w-1/3 ml-4 h-px bg-btnColor"></div>
           </div>
-          <div className="flex flex-col w-2/4 gap-5 mt-7">
+          <div className="flex flex-col gap-5 mt-7">
             <p className="text-textPrimary font-primaryFont">
               Hello, I'm Christoffer!
             </p>

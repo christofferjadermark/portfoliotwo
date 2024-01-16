@@ -2,10 +2,13 @@
 
 module.exports = {
   content: [
-    `./src/pages/**/*.{js,jsx,ts,tsx}`,
-    `./src/components/**/*.{js,jsx,ts,tsx}`,
+    "./src/pages/**/*.{js,jsx,ts,tsx}",
+    "./src/components/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    mytheme: {
+      primary: "#6FCF97",
+    },
     colors: {
       textPrimary: "#ABB2BF",
       bgColor: "#282C33",
@@ -15,8 +18,6 @@ module.exports = {
       white: "#FFFFFF",
     },
     fontFamily: {
-      sans: ["Graphik", "sans-serif"],
-      serif: ["Merriweather", "serif"],
       primaryFont: ["Azeret Mono", "monospace"],
     },
     extend: {
@@ -28,6 +29,6 @@ module.exports = {
         "4xl": "2rem",
       },
     },
-    plugins: [require("daisyui")],
   },
+  plugins: [require("daisyui"), "gatsby-plugin-postcss"],
 };

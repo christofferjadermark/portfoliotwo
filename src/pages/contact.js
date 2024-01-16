@@ -1,19 +1,16 @@
 import React from "react";
 import Layout from "../components/layout";
-import { useState } from "react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { Switch } from "@headlessui/react";
-import { Link } from "gatsby";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import profile from "../assets/profile.jpg";
 
 const ContactPage = () => {
-  const [agreed, setAgreed] = useState(false);
   return (
     <Layout>
       <div className="isolate bg- px-6 py-24 sm:py-32 lg:px-8">
+        <div className="avatar flex justify-center pb-4">
+          <div className="w-24 mask mask-hexagon">
+            <img src={profile} />
+          </div>
+        </div>
         <div
           className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
           aria-hidden="true"
@@ -115,34 +112,6 @@ const ContactPage = () => {
                 />
               </div>
             </div>
-            <Switch.Group as="div" className="flex gap-x-4 sm:col-span-2">
-              <div className="flex h-6 items-center">
-                <Switch
-                  checked={agreed}
-                  onChange={setAgreed}
-                  className={classNames(
-                    agreed ? "bg-btnColor" : "bg-bgColor",
-                    "flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-textPrimary transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-textPrimary"
-                  )}
-                >
-                  <span className="sr-only">Agree to policies</span>
-                  <span
-                    aria-hidden="true"
-                    className={classNames(
-                      agreed ? "translate-x-3.5" : "translate-x-0",
-                      "h-4 w-4 transform rounded-full bg-white shadow-sm ring-1 ring-gray-900/5 transition duration-200 ease-in-out"
-                    )}
-                  />
-                </Switch>
-              </div>
-              <Switch.Label className="text-sm leading-6 text-white">
-                By selecting this, you agree to our{" "}
-                <Link to="#" className="font-primaryFont text-indigo-600">
-                  privacy&nbsp;policy
-                </Link>
-                .
-              </Switch.Label>
-            </Switch.Group>
           </div>
           <div className="mt-10">
             <button

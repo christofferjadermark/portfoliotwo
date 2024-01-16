@@ -1,6 +1,7 @@
 import React from "react";
 import Icon from "@mdi/react";
 import { mdiGithub, mdiLinkedin, mdiAccountTie } from "@mdi/js";
+import { Link } from "gatsby";
 
 const DesktopFooter = () => {
   return (
@@ -23,8 +24,12 @@ const DesktopFooter = () => {
             Media
           </p>
           <div className="flex gap-2">
-            <Icon className="text-white" path={mdiGithub} size={1} />
-            <Icon className="text-white" path={mdiLinkedin} size={1} />
+            <Link to="https://github.com/christofferjadermark">
+              <Icon className="text-white" path={mdiGithub} size={1} />
+            </Link>
+            <Link to="https://www.linkedin.com/in/christoffer-jadermark-88956b100/">
+              <Icon className="text-white" path={mdiLinkedin} size={1} />
+            </Link>
           </div>
         </div>
       </div>
