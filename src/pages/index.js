@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import { useEffect, useState } from "react";
 import Layout from "../components/layout";
 import { Link } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const IndexPage = ({ data }) => {
   const truncate = (input) =>
@@ -68,9 +69,9 @@ const IndexPage = ({ data }) => {
             {data.allContentfulProjects.nodes.slice(0, 3).map((project) => (
               <Link to={`/projects/${project.slug}`} key={project.slug}>
                 <div className="mt-5 w-full border-textPrimary border overflow-hidden">
-                  <img
+                  <GatsbyImage
                     className="max-h-56 w-full object-cover border-textPrimary"
-                    src={project.image.file.url}
+                    image={getImage(project.image)}
                     alt="projects"
                   />
                   <p className="p-2 font-primaryFont border-y border-textPrimary text-textPrimary">
@@ -146,8 +147,10 @@ export const pageQuery = graphql`
         slug
         tags
         image {
-          file {
-            url
+          gatsbyImageData 
+            file {
+              url
+            
           }
         }
       }

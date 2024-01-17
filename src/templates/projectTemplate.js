@@ -14,7 +14,7 @@ const ProjectTemplate = ({ data }) => {
         </div>
         <div className="w-2/4 ml-4 h-px bg-btnColor"></div>
       </div>
-      <p className="p-3">{project.imageDescription}</p>
+      <p className="p-3 text-xl font-primaryFont">{project.imageDescription}</p>
       <div className="flex justify-center p-3">
         <img
           className="max-w-56 w-full object-contain border-textPrimary"
@@ -22,7 +22,7 @@ const ProjectTemplate = ({ data }) => {
           alt="project"
         />
       </div>
-      <p className="px-3">
+      <p className="px-3 text-lg font-primaryFont">
         {documentToReactComponents(JSON.parse(project.projectDescription.raw))}
       </p>
     </Layout>
