@@ -147,10 +147,9 @@ export const pageQuery = graphql`
         slug
         tags
         image {
-          gatsbyImageData 
-            file {
-              url
-            
+          gatsbyImageData
+          file {
+            url
           }
         }
       }

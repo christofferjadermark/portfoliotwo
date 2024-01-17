@@ -12,6 +12,7 @@ module.exports = {
     colors: {
       textPrimary: "#ABB2BF",
       bgColor: "#282C33",
+      navColor: "#1c1f24",
       textSecondary: "#6FCF97",
       btnColor: "#6FCF97",
       secondaryBtnColor: "#C778DD",

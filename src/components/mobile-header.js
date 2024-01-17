@@ -5,57 +5,73 @@ const MobileHeader = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
+    if (isNavOpen) {
+      setIsNavOpen(false);
+    }
+  };
+
+  const closeNav = () => {
+    setIsNavOpen(false);
   };
 
   return (
-    <div className="navbar bg-bgColor">
-      <div className="navbar-start relative">
-        <div className="flex p-8">
-          <div className="flex-1">
-            <a className="btn btn-ghost font-primaryFont items-center text-textPrimary">
-              christoffer jadermark
-            </a>
-          </div>
-          <div>
-            <button
-              tabIndex={0}
-              className="btn cursor-pointer btn-square btn-ghost"
-              onClick={toggleNav}
+    <div className="navbar bg-navColor">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <div
+            onClick={toggleNav}
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost btn-circle"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-7 h-7 stroke-textSecondary"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
-            </button>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />
+            </svg>
           </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-md bg-navColor rounded-box w-52"
+          >
+            <li className="font-primaryFont">
+              <Link to="/" onClick={closeNav} className="test">
+                home
+              </Link>
+            </li>
+            <li className="font-primaryFont">
+              <Link to="/works" onClick={closeNav} className="test">
+                works
+              </Link>
+            </li>
+            <li className="font-primaryFont">
+              <Link to="/about" onClick={closeNav} className="test">
+                about-me
+              </Link>
+            </li>
+            <li className="font-primaryFont">
+              <Link to="/contact" onClick={closeNav} className="test">
+                contacts
+              </Link>
+            </li>
+          </ul>
         </div>
-        <ul
-          className={`absolute top-full right-0 mt-2 text-textPrimary dropdown-content menu p-5 shadow bg-bgColor rounded-box w-52 ${
-            isNavOpen ? "" : "hidden"
-          }`}
-        >
-          <li className="font-primaryFont items-center test flex">
-            <Link to="/">home</Link>
-          </li>
-          <li className="font-primaryFont items-center test flex"><Link to="/works">works</Link></li>
-          <li className="font-primaryFont items-center test flex">
-            <Link to="/about">about-me</Link>
-          </li>
-          <li className="font-primaryFont items-center test flex">
-            <Link to="/contact">contacts</Link>
-          </li>
-        </ul>
       </div>
+      <div className="navbar-center">
+        <a className="btn btn-ghost text-base font-primaryFont">
+          christoffer jadermark
+        </a>
+      </div>
+      <div className="navbar-end"></div>
     </div>
   );
 };

@@ -10,6 +10,11 @@
   color: #6fcf97;
 }
 
+.nav-header::before {
+  content: "#";
+  color: #809187;
+}
+
 :root {
   background-color: #282c33;
 }
