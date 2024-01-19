@@ -1,7 +1,7 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
-require("dotenv").config()
+require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
@@ -22,7 +22,7 @@ module.exports = {
         },
       },
     },
-    'gatsby-plugin-netlify',
+    "gatsby-plugin-netlify",
     "gatsby-plugin-react-svg",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",

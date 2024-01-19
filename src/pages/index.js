@@ -8,6 +8,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 const IndexPage = ({ data }) => {
   const truncate = (input) =>
     input?.length > 75 ? `${input.substring(0, 75)}...` : input;
+  //This function is designed to truncate a string if it exceeds 75 characters. If the input string is longer than 75 characters, it shortens the string to the first 75 characters and appends an ellipsis ("..."). If the string is 75 characters or less, it returns the string as is.
 
   const words = [
     { id: 0, value: "Hello," },
@@ -18,10 +19,12 @@ const IndexPage = ({ data }) => {
     { id: 5, value: "Hej," },
     { id: 6, value: "Guten Tag," },
   ];
+  //This is an array of objects, each representing a word in a different language. Every object has two properties: an id (a unique identifier) and a value (the word itself).
 
   function randomWord() {
     return words[Math.floor(Math.random() * words.length)].value;
   }
+  //This function selects a random word from the words array. It generates a random index (using Math.random()) within the range of the array's indices and returns the value of the word at that index.
 
   function NewWord() {
     const [word, setWord] = useState("");
@@ -38,7 +41,7 @@ const IndexPage = ({ data }) => {
       </div>
     );
   }
-
+  //NewWord is a React functional component. It uses the useState hook to manage the state word, which holds the currently displayed word. The useEffect hook is used to set up an interval that updates word every 1500 milliseconds (1.5 seconds) with a new random word from the words array. The clearInterval in the return function of useEffect is a cleanup mechanism to clear the interval when the component is unmounted, preventing memory leaks.
   return (
     <Layout>
       <div className="glass w-full h-0.5 rounded-sm mb-10"></div>
